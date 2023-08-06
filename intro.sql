@@ -91,3 +91,32 @@ INSERT into user1 values (3, 'Mamun3', 'mamun3@gmail.com');
 
 
 SELECT * from user1;
+
+-- Department Table
+-- Each Department has many employees
+CREATE TABLE Department(
+    deptID SERIAL PRIMARY KEY,
+    deptName VARCHAR(50)
+);
+
+DELETE FROM Department WHERE deptID = 1;
+
+SELECT * FROM Department;
+
+-- Employee Table
+-- Each Employee belongs to a department
+CREATE TABLE Employee(
+    empID SERIAL PRIMARY KEY,
+    empName VARCHAR(50) NOT NULL,
+    departmentID INT,
+    CONSTRAINT fk_constraint_dept
+        FOREIGN KEY (departmentID)
+        REFERENCES Department(deptID)
+)
+
+insert into Employee values (1, 'Mamun', 1);
+
+DELETE FROM Employee WHERE empID = 1;
+
+
+SELECT * FROM Employee;
