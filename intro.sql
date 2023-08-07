@@ -143,3 +143,15 @@ WHERE course_id > 1 AND course_id < 5;
 
 DELETE FROM courses
 WHERE course_id = 1;
+
+
+-- SELECT
+SELECT * FROM employees
+ORDER BY name
+ASC LIMIT 10 OFFSET 2;
+
+-- Highest salary from employees table
+SELECT * FROM employees ORDER BY salary DESC LIMIT 1;
+
+-- Third Highest salary
+SELECT * from employees ORDER BY salary DESC LIMIT 1 OFFSET 2;
