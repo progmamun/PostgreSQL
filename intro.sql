@@ -120,3 +120,26 @@ DELETE FROM Employee WHERE empID = 1;
 
 
 SELECT * FROM Employee;
+
+CREATE TABLE courses(
+    course_id SERIAL PRIMARY KEY,
+    course_name VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    published_date DATE
+)
+
+SELECT * FROM courses;
+
+-- Date formate - YYYY-MM-DD
+
+INSERT INTO courses(course_name, description,  published_date) VALUES('PostgreSQL for developers', 'A complete PostgreSQL for Developers', '2020-07-13'),('PostgreSQL system admin', 'A Guide for DBA', NULL),('PostgreSQL High Performance', NULL, NULL),('PostgreSQL Bootcamp', 'Learn PostgreSQL via bootcamp', '2023-07-13'),('Mastering PostgreSQL', 'Mastering PostgreSQL in 60 Days', '2023-05-18'),
+
+-- UPDATE
+update courses 
+set 
+course_name = 'Postgres',
+description = 'Dummy text'
+WHERE course_id > 1 AND course_id < 5;
+
+DELETE FROM courses
+WHERE course_id = 1;
