@@ -155,3 +155,23 @@ SELECT * FROM employees ORDER BY salary DESC LIMIT 1;
 
 -- Third Highest salary
 SELECT * from employees ORDER BY salary DESC LIMIT 1 OFFSET 2;
+
+-- IN, NOT IN, BETWEEN, LIKE
+SELECT * FROM employees WHERE empid IN (2, 100, 5);
+SELECT * FROM employees WHERE empid NOT IN (2, 100, 5);
+SELECT * FROM employees WHERE salary BETWEEN 10000 AND 15000;
+SELECT * FROM employees WHERE name LIKE '%a%'; -- name where a include 
+SELECT * FROM employees WHERE name LIKE 'A%'; -- name where first letter start with a 
+
+--  SPECIFIC position
+SELECT * FROM employees WHERE name LIKE '_m%'; -- name where 2nd position start with m
+SELECT * FROM employees WHERE name LIKE 'G%a'; -- name start with G end with a
+
+-- join Left,  right, full
+SELECT * FROM employee
+FULL JOIN department ON department.department_id = employee.department_id;
+
+-- natural, cross JOIN
+SELECT *
+FROM employee
+NATURAL JOIN department;
