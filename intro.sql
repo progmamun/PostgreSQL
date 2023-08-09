@@ -175,3 +175,13 @@ FULL JOIN department ON department.department_id = employee.department_id;
 SELECT *
 FROM employee
 NATURAL JOIN department;
+
+-- AGGREGATE FUNCTION
+SELECT MAX(salary) from employees;
+-- aliases 
+SELECT MAX(salary) AS HeightSalary from employees;
+
+SELECT d.name, avg(e.salary), sum(e.salary), max(e.salary) from employees e  FULL JOIN department d on e.deptid = d.deptid GROUP BY d.name;
+SELECT d.name, avg(e.salary), sum(e.salary), max(e.salary) from employees e  FULL JOIN department d on e.deptid = d.deptid GROUP BY d.name HAVING avg(e.salary) > 60000;
+
+SELECT d.name, sum(salary), avg(salary), min(salary), count(*) from department FULL JOIN employees e on e.deptid = d.deptid GROUP BY d.deptid;
