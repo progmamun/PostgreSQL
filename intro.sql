@@ -185,3 +185,22 @@ SELECT d.name, avg(e.salary), sum(e.salary), max(e.salary) from employees e  FUL
 SELECT d.name, avg(e.salary), sum(e.salary), max(e.salary) from employees e  FULL JOIN department d on e.deptid = d.deptid GROUP BY d.name HAVING avg(e.salary) > 60000;
 
 SELECT d.name, sum(salary), avg(salary), min(salary), count(*) from department FULL JOIN employees e on e.deptid = d.deptid GROUP BY d.deptid;
+
+-- Sup Query
+SELECT * FROM employees WHERE salary IN (
+    SELECT salary form employees WHERE name LIKE "%a%"
+)
+
+-- avg salary thika basi
+SELECT * FROM employees WHERE salary > (
+    SELECT avg(salary) form employees
+)
+
+SELECT email, (
+    SELECT avg(salary) from employees
+) from employees;
+
+select dept_id, avg_salary from (
+    select deptID as dept_ID, AVG(salary) as avg_salary from employees GROUP BY deptid
+) as tempTable
+JOIN departments d ON d.deptid = deptid;
