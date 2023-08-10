@@ -204,3 +204,9 @@ select dept_id, avg_salary from (
     select deptID as dept_ID, AVG(salary) as avg_salary from employees GROUP BY deptid
 ) as tempTable
 JOIN departments d ON d.deptid = deptid;
+
+-- ## INDEX
+CREATE INDEX name_idx on employees(name);
+
+-- analyze 
+explain ANALYSE SELECT empid, name, email from employees where name = 'Greta';
